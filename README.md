@@ -1,8 +1,8 @@
-# WordPress to Custom PHP SQLite CMS Framework
+# GilaCMS
 
-This is a lightweight, responsive, and performance-optimized custom CMS backed by **SQLite**. It includes a dynamic theme toggle (Dark/Light mode), SEO best practices (Sitemap, RSS, metadata), clean front-controller URL routing, and a modular editor workspace.
+**GilaCMS** is a lightweight, responsive, and performance-optimized custom blogging CMS backed by **SQLite**. It includes a dynamic theme toggle (Dark/Light mode), SEO best practices (dynamic XML Sitemap, RSS feeds, schema.org tags), clean URL routing, and a pluggable modular admin editor.
 
-It features a WordPress REST API migration scraper to import categories, tags, post content, and download media assets directly into the SQLite structure.
+It features an automated WordPress REST API migration scraper to pull posts, categories, tags, and download media assets directly into the SQLite database.
 
 ## 🚀 Key Features
 - **SQLite Database:** Zero configuration, high performance, self-contained single file database.
@@ -18,13 +18,10 @@ It features a WordPress REST API migration scraper to import categories, tags, p
 
 ## 🛠️ Installation & Setup
 
-### 1. Clone/Download the Codebase
-Extract this codebase into your web server directory (e.g. `/var/www/yoursite.com`).
-
-### 2. Configure Settings
+### 1. Configure Settings
 Open `config.php` and configure your site settings:
 ```php
-define('SITE_NAME', 'My Custom CMS');
+define('SITE_NAME', 'GilaCMS Portal');
 define('SITE_DESCRIPTION', 'A lightweight SQLite blog CMS.');
 define('SITE_DOMAIN', 'yoursite.com');
 
@@ -34,7 +31,7 @@ define('ADMIN_PASSWORD', 'your-secure-password'); // Admin dashboard password
 define('CMS_EDITOR', 'tinymce'); 
 ```
 
-### 3. Migrate from WordPress
+### 2. Migrate from WordPress
 Edit `import_wp.php` configuration block to target your source WordPress API details:
 ```php
 define('API_BASE_URL', 'https://your-wordpress-site.com/wp-json/wp/v2');
@@ -59,9 +56,9 @@ php import_wp.php --execute
 #### Nginx Configuration
 Add a local location block to route pretty URLs to `index.php`:
 ```nginx
-location /wp-php-sqlite-cms/ {
+location /gilacms/ {
     index  index.php index.html index.htm;
-    try_files $uri $uri/ /wp-php-sqlite-cms/index.php?$args;
+    try_files $uri $uri/ /gilacms/index.php?$args;
 }
 ```
 
