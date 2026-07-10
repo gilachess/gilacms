@@ -1,0 +1,9 @@
+# Apache URL Rewrite for Custom SEO Slugs
+RewriteEngine On
+
+# Do not rewrite physical files or directories
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Forward all non-existent requests to index.php front controller
+RewriteRule . index.php [L]
